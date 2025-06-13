@@ -1,26 +1,43 @@
-# Yıldız Sınıflandırma API
+# 🔬 Yıldız Sınıflandırma API
 
-Bu proje, yıldızların özelliklerine göre sınıflandırılmasını yapan bir Flask API'sidir.
+Bu proje, yıldızların özelliklerine göre sınıflandırılmasını yapan bir Flask API'sidir. Veri bilimi ve yapay zeka alanında temel makine öğrenmesi ve derin öğrenme tekniklerini uygulamak amacıyla hazırlanmıştır.
 
-## Özellikler
+## 🎯 Proje Aşamaları
+
+- 📥 Veri yükleme ve analiz
+- 🧹 Veri temizleme ve ön işleme
+- 🏷 Etiket kodlama ve özellik mühendisliği
+- 🔎 Eğitim ve test setlerine ayırma
+- 🤖 Model oluşturma ve eğitimi
+- 📊 Model performans değerlendirmesi
+  - Doğruluk (Accuracy)
+  - Kesinlik (Precision)
+  - Duyarlılık (Recall)
+  - F1 Skoru
+  - Kayıp (Loss)
+  - Karışıklık Matrisi (Confusion Matrix)
+
+## ⚙ Özellikler
 
 - TensorFlow modeli kullanarak yıldız sınıflandırması
 - RESTful API endpoint'i
 - CORS desteği
 
-## Gereksinimler
+## 🛠 Gereksinimler
 
 - Python 3.x
 - Flask
 - TensorFlow
 - NumPy
 - scikit-learn (joblib için)
+- Pandas
+- Matplotlib & Seaborn
 
-## Kurulum
+## 📦 Kurulum
 
 1. Gerekli paketleri yükleyin:
 ```bash
-pip install flask tensorflow numpy scikit-learn flask-cors
+pip install flask tensorflow numpy scikit-learn flask-cors pandas matplotlib seaborn
 ```
 
 2. Model dosyalarını (`star_model.h5` ve `scaler.pkl`) projenin kök dizinine yerleştirin.
@@ -30,7 +47,7 @@ pip install flask tensorflow numpy scikit-learn flask-cors
 python app.py
 ```
 
-## API Kullanımı
+## 📡 API Kullanımı
 
 POST isteği `/predict` endpoint'ine gönderilmelidir. İstek gövdesi şu formatta olmalıdır:
 
@@ -47,6 +64,10 @@ POST isteği `/predict` endpoint'ine gönderilmelidir. İstek gövdesi şu forma
 }
 ```
 
-## Lisans
+## 📌 Not
 
-MIT 
+Projelerimde kullanılan yöntemler, hem sınıflandırma hem de regresyon problemleri için uyarlanabilir. Model seçimleri, problem türüne ve veri setine göre farklılık gösterebilir.
+
+## 📄 Lisans
+
+MIT
