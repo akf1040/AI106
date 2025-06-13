@@ -2,6 +2,10 @@
 
 Bu proje, yıldızların özelliklerine göre sınıflandırılmasını yapan bir Flask API'sidir. Veri bilimi ve yapay zeka alanında temel makine öğrenmesi ve derin öğrenme tekniklerini uygulamak amacıyla hazırlanmıştır.
 
+## 📸 Arayüz Görüntüsü
+
+![Yıldız Sınıflandırma Arayüzü](images/Ekran%20görüntüsü%202025-06-13%20162257.png)
+
 ## 🎯 Proje Aşamaları
 
 - 📥 Veri yükleme ve analiz
