@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yıldız Sınıflandırma Tahmini</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            margin-top: 60px;
+            max-width: 500px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 40px 30px 30px 30px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .form-label {
+            color: #ffd700;
+        }
+        #result {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+        }
+        button {
+            width: 100%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Yıldız Sınıflandırma Tahmini ✨</h1>
+        <form id="predictForm">
+            <div class="mb-3">
+                <label class="form-label">Alpha</label>
+                <input type="number" step="any" name="alpha" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Delta</label>
+                <input type="number" step="any" name="delta" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">u</label>
+                <input type="number" step="any" name="u" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">g</label>
+                <input type="number" step="any" name="g" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">r</label>
+                <input type="number" step="any" name="r" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">i</label>
+                <input type="number" step="any" name="i" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">z</label>
+                <input type="number" step="any" name="z" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Redshift</label>
+                <input type="number" step="any" name="redshift" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-warning">Tahmin Et</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {};
+            formData.forEach((value, key) => data[key] = parseFloat(value));
+            const response = await fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            document.getElementById('result').innerHTML =
+                `<strong>Tahmin Edilen Sınıf:</strong> ${result.predicted_class}<br>
+                 <strong>Güven:</strong> ${(result.confidence*100).toFixed(2)}%`;
+        });
+    </script>
+</body>
+</html>
